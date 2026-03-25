@@ -29,39 +29,40 @@ type ProductPackage = {
   features: string[];
 };
 
-const PHONE_NUMBER = "0507-1338-8402"; // 실제 번호로 변경
-const KAKAO_URL = "https://talk.naver.com/ct/wcekgn?frm=home"; // 실제 톡톡/카카오 링크로 변경
+const PHONE_NUMBER = "0507-1338-8402";
+const KAKAO_URL = "https://talk.naver.com/ct/wcekgn?frm=home";
 const BROCHURE_URL = "https://브로슈어.kr";
-const VISIT_ADDRESS = "경기도 화성시 효행구 봉담읍 와우안길 109 화성공구유통밸리 109동 211호 방문 상담 가능"; // 실제 주소로 변경
+const VISIT_ADDRESS =
+  "경기도 화성시 효행구 봉담읍 와우안길 109 화성공구유통밸리 109동 211호 방문 상담 가능";
 
 const starterPrompts: StarterItem[] = [
   {
-    title: "브로슈어 초안 만들기",
+    title: "브로슈어 초안",
     icon: "✦",
     prompt:
       "우리 회사 정보를 바탕으로 브로슈어 초안을 실제 제작 가능한 문서 형태로 작성해줘.",
     description: "표지, 회사소개, 서비스, 스토리까지 초안 생성",
   },
   {
-    title: "회사소개서 만들기",
+    title: "회사소개서 초안",
     icon: "◼",
     prompt:
       "우리 회사 정보를 바탕으로 회사소개서 초안을 실제 문서 형태로 작성해줘.",
     description: "대외 소개용 문서를 구조적으로 정리",
   },
   {
-    title: "사업전략 상담하기",
-    icon: "▲",
-    prompt:
-      "우리 회사의 사업 방향과 홍보 전략을 브로슈어 활용까지 포함해서 실행형으로 상담해줘.",
-    description: "막연한 조언이 아니라 실행안 중심으로 정리",
-  },
-  {
-    title: "제품소개서 만들기",
+    title: "제품소개서 초안",
     icon: "◆",
     prompt:
       "우리 회사의 주요 제품과 서비스를 바탕으로 제품소개서 초안을 작성해줘.",
     description: "제품/서비스 설명을 판매 문장으로 정리",
+  },
+  {
+    title: "사업전략 상담",
+    icon: "▲",
+    prompt:
+      "우리 회사의 사업 방향과 홍보 전략을 브로슈어 활용까지 포함해서 실행형으로 상담해줘.",
+    description: "막연한 조언이 아니라 실행안 중심으로 정리",
   },
 ];
 
@@ -164,9 +165,6 @@ const brochurePackages: ProductPackage[] = [
     ],
   },
 ];
-
-
-
 
 function LogoArea() {
   const [imageError, setImageError] = useState(false);
@@ -467,10 +465,7 @@ export default function Home() {
     const text = (customInput ?? input).trim();
     if (!text || loading) return;
 
-    const newMessages: Message[] = [
-      ...messages,
-      { role: "user", content: text },
-    ];
+    const newMessages: Message[] = [...messages, { role: "user", content: text }];
 
     setMessages(newMessages);
     setInput("");
@@ -619,7 +614,6 @@ export default function Home() {
     .dot:nth-child(2) { animation-delay: 0.15s; }
     .dot:nth-child(3) { animation-delay: 0.3s; }
 
-
     @keyframes dotBounce {
       0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
       40% { transform: translateY(-4px); opacity: 1; }
@@ -629,7 +623,6 @@ export default function Home() {
       from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
 
     .app-shell {
       max-width: 1500px;
@@ -668,8 +661,8 @@ export default function Home() {
     }
 
     .chip-row {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
       margin-bottom: 18px;
     }
@@ -712,7 +705,6 @@ export default function Home() {
       align-items: center;
     }
 
-
     .quick-card {
       transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
     }
@@ -747,10 +739,24 @@ export default function Home() {
       gap: 12px;
     }
 
+    .sidebar-actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .sidebar-reset-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
     @media (max-width: 1180px) {
       .app-shell { grid-template-columns: 1fr; }
       .sidebar { position: relative; top: 0; }
       .package-grid { grid-template-columns: 1fr; }
+      .chip-row { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 760px) {
@@ -772,6 +778,9 @@ export default function Home() {
         gap: 8px;
       }
       .package-grid { grid-template-columns: 1fr; }
+      .chip-row { grid-template-columns: 1fr 1fr; }
+      .sidebar-actions-grid { grid-template-columns: 1fr 1fr; }
+      .sidebar-reset-grid { grid-template-columns: 1fr; }
     }
   `;
 
@@ -779,7 +788,6 @@ export default function Home() {
     <>
       <style>{printStyles}</style>
       <style>{globalStyles}</style>
-      
 
       <main
         style={{
@@ -864,56 +872,6 @@ export default function Home() {
                 사업전략 구성을 위한 자체개발 AI모델
               </div>
 
-              
-
-              
-
-              <div
-                className="quick-title"
-                style={{
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: "#9f1239",
-                  marginBottom: 10,
-                  letterSpacing: "0.02em",
-                }}
-              >
-                QUICK START
-              </div>
-
-              <div style={{ display: "grid", gap: 10 }}>
-                {starterPrompts.map((item, i) => (
-                  <button
-                    key={i}
-                    onClick={() => sendMessage(item.prompt)}
-                    disabled={loading}
-                    className="quick-card"
-                    style={{
-                      textAlign: "left",
-                      padding: 14,
-                      borderRadius: 16,
-                      border: "1px solid rgba(255,255,255,0.40)",
-                      background: "rgba(255,255,255,0.42)",
-                      color: "#6b2143",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 6, lineHeight: 1.4 }}>
-                      {item.icon} {item.title}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: 12,
-                        color: "#8a4b67",
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {item.description}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
               <div
                 style={{
                   height: 1,
@@ -922,28 +880,33 @@ export default function Home() {
                 }}
               />
 
-              <div className="sidebar-actions" style={{ display: "grid", gap: 10 }}>
-                <a href={`tel:${PHONE_NUMBER}`} style={linkReset}>
-                  <div className="action-btn" style={sideButtonPink}>전화 문의</div>
-                </a>
-                <a href={KAKAO_URL} target="_blank" rel="noreferrer" style={linkReset}>
-                  <div className="action-btn" style={sideButtonPink}>톡톡 상담</div>
-                </a>
-                <a href={BROCHURE_URL} target="_blank" rel="noreferrer" style={linkReset}>
-                  <div className="action-btn" style={sideButtonPink}>브로슈어.kr 이동</div>
-                </a>
-                <button onClick={clearMessages} className="action-btn" style={sideButtonSoft}>
-                  대화 초기화
-                </button>
-                <button onClick={clearCompanyInfo} className="action-btn" style={sideButtonSoft}>
-                  회사정보 초기화
-                </button>
-                <button onClick={clearAll} className="action-btn" style={sideButtonSoft}>
-                  전체 초기화
-                </button>
-                <button onClick={() => window.print()} className="action-btn" style={sideButtonPink}>
-                  PDF로 저장
-                </button>
+              <div className="sidebar-actions">
+                <div className="sidebar-actions-grid">
+                  <a href={`tel:${PHONE_NUMBER}`} style={linkReset}>
+                    <div className="action-btn" style={sideButtonPink}>전화 문의</div>
+                  </a>
+                  <a href={KAKAO_URL} target="_blank" rel="noreferrer" style={linkReset}>
+                    <div className="action-btn" style={sideButtonPink}>톡톡 상담</div>
+                  </a>
+                  <a href={BROCHURE_URL} target="_blank" rel="noreferrer" style={linkReset}>
+                    <div className="action-btn" style={sideButtonPink}>브로슈어.kr 이동</div>
+                  </a>
+                  <button onClick={() => window.print()} className="action-btn" style={sideButtonPink}>
+                    PDF로 저장
+                  </button>
+                </div>
+
+                <div className="sidebar-reset-grid">
+                  <button onClick={clearMessages} className="action-btn" style={sideButtonSoft}>
+                    대화 초기화
+                  </button>
+                  <button onClick={clearCompanyInfo} className="action-btn" style={sideButtonSoft}>
+                    회사정보 초기화
+                  </button>
+                  <button onClick={clearAll} className="action-btn" style={sideButtonSoft}>
+                    전체 초기화
+                  </button>
+                </div>
               </div>
             </div>
           </aside>
@@ -1069,10 +1032,37 @@ export default function Home() {
             </div>
 
             <div className="chip-row">
-              <div style={chipStyle}>브로슈어 초안</div>
-              <div style={chipStyle}>회사소개서 초안</div>
-              <div style={chipStyle}>제품소개서 초안</div>
-              <div style={chipStyle}>사업전략 상담</div>
+              {starterPrompts.map((item, i) => (
+                <button
+                  key={i}
+                  onClick={() => sendMessage(item.prompt)}
+                  disabled={loading}
+                  className="quick-card"
+                  style={{
+                    textAlign: "left",
+                    padding: 14,
+                    borderRadius: 16,
+                    border: "1px solid rgba(255,255,255,0.40)",
+                    background: "rgba(255,255,255,0.72)",
+                    color: "#6b2143",
+                    cursor: "pointer",
+                    backdropFilter: "blur(10px)",
+                  }}
+                >
+                  <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6, lineHeight: 1.4 }}>
+                    {item.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 12,
+                      color: "#8a4b67",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {item.description}
+                  </div>
+                </button>
+              ))}
             </div>
 
             <div
@@ -1137,7 +1127,7 @@ export default function Home() {
                         color: "#5b5f75",
                       }}
                     >
-                      회사 정보를 입력한 뒤, 왼쪽 작업 버튼을 누르거나
+                      회사 정보를 입력한 뒤, 가운데 작업 버튼을 누르거나
                       <br />
                       아래 입력창에서 바로 요청하면 됩니다.
                     </div>
@@ -1146,10 +1136,7 @@ export default function Home() {
               ) : (
                 <>
                   {messages.map((m, i) => (
-                    <div
-                      key={i}
-                      className={`message-row ${m.role}`}
-                    >
+                    <div key={i} className={`message-row ${m.role}`}>
                       <div
                         className="message-bubble"
                         style={{
@@ -1433,19 +1420,6 @@ const fieldStylePremium: React.CSSProperties = {
   backdropFilter: "blur(10px)",
 };
 
-const chipStyle: React.CSSProperties = {
-  display: "inline-flex",
-  alignItems: "center",
-  padding: "9px 13px",
-  borderRadius: 999,
-  backgroundColor: "rgba(255,255,255,0.72)",
-  border: "1px solid rgba(255,255,255,0.40)",
-  color: "#6d28d9",
-  fontSize: 13,
-  fontWeight: 700,
-  backdropFilter: "blur(8px)",
-};
-
 const sideButtonPink: React.CSSProperties = {
   padding: "12px 14px",
   borderRadius: 14,
@@ -1459,12 +1433,12 @@ const sideButtonPink: React.CSSProperties = {
 };
 
 const sideButtonSoft: React.CSSProperties = {
-  padding: "12px 14px",
+  padding: "12px 10px",
   borderRadius: 14,
   border: "1px solid rgba(255,255,255,0.34)",
   backgroundColor: "rgba(255,255,255,0.32)",
   color: "#7a3652",
-  fontSize: 14,
+  fontSize: 13,
   cursor: "pointer",
   textAlign: "center",
 };
