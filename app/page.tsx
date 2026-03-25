@@ -926,13 +926,15 @@ export default function Home() {
                       color: "#7a3652",
                     }}
                   >
-                    챗브로슈어AI가 초안을 먼저 정리하고,
+                    ① 챗브로슈어AI가 초안을 먼저 정리합니다.
                     <br />
-                    이후 전문 디자이너와 편집자가 브로슈어를 완성합니다.
+                    ② 전문 디자이너와 편집자가 수정하여 완성합니다.
                     <br />
-                    인쇄 제작이 끝나면 브로슈어.kr이 배포와 영업까지 연결해
+                    ③ 전문가의 손길로 인쇄와 제작을 진행합니다. 
                     <br />
-                    실제 마케팅 실행으로 이어드립니다.
+                    ④ 마케팅 전략을 설정하고 배포와 영업을 대행합니다.
+                    <br />
+                    ⑤ 최고의 마케팅 성과를 달성해 드립니다.
                   </div>
                 </div>
               </div>
@@ -967,7 +969,7 @@ export default function Home() {
                     대화 초기화
                   </button>
                   <button onClick={clearCompanyInfo} className="action-btn" style={sideButtonSoft}>
-                    회사정보 초기화
+                    정보 초기화
                   </button>
                   <button onClick={clearAll} className="action-btn" style={sideButtonSoft}>
                     전체 초기화
@@ -993,19 +995,7 @@ export default function Home() {
           >
             <div className="hero-grid">
               <div>
-                <div
-                  className="hero-title"
-                  style={{
-                    fontSize: 34,
-                    fontWeight: 800,
-                    letterSpacing: "-0.06em",
-                    lineHeight: 1.08,
-                    color: "#1e1b4b",
-                    marginBottom: 8,
-                  }}
-                >
-                  무엇을 정리해드릴까요?
-                </div>
+                
 
                 <div
                   className="hero-subtitle"
@@ -1015,7 +1005,7 @@ export default function Home() {
                     color: "#5b5f75",
                   }}
                 >
-                  회사 정보를 입력한 뒤, 가운데 작업 버튼을 누르거나 아래 입력창에서 바로 요청하면 됩니다.
+                  똑똑한 AI가 당신 사업이 나아갈 길을 안내합니다. 무료로 챗브로슈어AI를 활용하세요.
                 </div>
               </div>
             </div>
