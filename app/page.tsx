@@ -939,14 +939,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div
-                style={{
-                  height: 1,
-                  background: "rgba(159,18,57,0.10)",
-                  margin: "0 0 14px",
-                  flexShrink: 0,
-                }}
-              />
+             
 
               <div className="sidebar-actions" style={{ flexShrink: 0 }}>
                 <div className="sidebar-actions-grid">
