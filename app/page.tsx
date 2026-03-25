@@ -165,76 +165,8 @@ const brochurePackages: ProductPackage[] = [
   },
 ];
 
-const sparklePositions = [
-  { top: "4%", left: "8%", delay: "0s", size: 7, duration: "3.6s" },
-  { top: "8%", left: "22%", delay: "1.1s", size: 10, duration: "4.2s" },
-  { top: "7%", left: "40%", delay: "0.4s", size: 8, duration: "3.8s" },
-  { top: "12%", left: "58%", delay: "2.2s", size: 12, duration: "4.5s" },
-  { top: "10%", left: "76%", delay: "0.8s", size: 8, duration: "3.7s" },
-  { top: "16%", left: "90%", delay: "1.9s", size: 11, duration: "4.7s" },
 
-  { top: "24%", left: "12%", delay: "2.8s", size: 9, duration: "4.0s" },
-  { top: "28%", left: "30%", delay: "1.5s", size: 13, duration: "4.9s" },
-  { top: "22%", left: "48%", delay: "0.7s", size: 7, duration: "3.6s" },
-  { top: "30%", left: "68%", delay: "2.6s", size: 12, duration: "4.4s" },
-  { top: "26%", left: "84%", delay: "1.2s", size: 9, duration: "4.1s" },
 
-  { top: "38%", left: "6%", delay: "0.6s", size: 11, duration: "4.8s" },
-  { top: "42%", left: "18%", delay: "2.1s", size: 8, duration: "3.8s" },
-  { top: "36%", left: "36%", delay: "1.4s", size: 13, duration: "5.0s" },
-  { top: "44%", left: "54%", delay: "2.9s", size: 10, duration: "4.2s" },
-  { top: "40%", left: "74%", delay: "0.9s", size: 12, duration: "4.6s" },
-  { top: "46%", left: "92%", delay: "1.7s", size: 8, duration: "3.9s" },
-
-  { top: "56%", left: "10%", delay: "2.5s", size: 13, duration: "4.8s" },
-  { top: "60%", left: "26%", delay: "0.5s", size: 9, duration: "3.7s" },
-  { top: "54%", left: "44%", delay: "1.8s", size: 11, duration: "4.3s" },
-  { top: "62%", left: "60%", delay: "2.7s", size: 14, duration: "5.2s" },
-  { top: "58%", left: "80%", delay: "1.0s", size: 9, duration: "3.9s" },
-  { top: "64%", left: "94%", delay: "3.0s", size: 11, duration: "4.6s" },
-
-  { top: "74%", left: "14%", delay: "0.3s", size: 10, duration: "4.1s" },
-  { top: "78%", left: "34%", delay: "1.6s", size: 13, duration: "4.7s" },
-  { top: "72%", left: "52%", delay: "2.4s", size: 8, duration: "3.8s" },
-  { top: "80%", left: "70%", delay: "0.8s", size: 12, duration: "4.5s" },
-  { top: "76%", left: "88%", delay: "1.9s", size: 10, duration: "4.0s" },
-
-  { top: "88%", left: "8%", delay: "2.2s", size: 12, duration: "4.9s" },
-  { top: "92%", left: "24%", delay: "0.7s", size: 8, duration: "3.7s" },
-  { top: "90%", left: "46%", delay: "1.3s", size: 13, duration: "5.1s" },
-  { top: "94%", left: "66%", delay: "2.6s", size: 9, duration: "4.2s" },
-  { top: "89%", left: "84%", delay: "1.4s", size: 12, duration: "4.6s" },
-];
-
-function SparkleBackground() {
-  return (
-    <div
-      aria-hidden="true"
-      style={{
-        position: "fixed",
-        inset: 0,
-        pointerEvents: "none",
-        overflow: "hidden",
-        zIndex: 0,
-      }}
-    >
-      {sparklePositions.map((sparkle, index) => (
-        <span
-          key={index}
-          className="sparkle"
-          style={{
-            top: sparkle.top,
-            left: sparkle.left,
-            animationDelay: sparkle.delay,
-            animationDuration: sparkle.duration,
-            width: sparkle.size,
-            height: sparkle.size,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
 
 function LogoArea() {
   const [imageError, setImageError] = useState(false);
@@ -625,16 +557,15 @@ export default function Home() {
   const printStyles = `
     @media print {
       aside,
-      .composer-shell,
-      .chip-row,
-      .status-pill,
-      .quick-title,
-      .sidebar-actions,
-      .lead-box,
-      .floating-cta,
-      .sparkle {
-        display: none !important;
-      }
+.composer-shell,
+.chip-row,
+.status-pill,
+.quick-title,
+.sidebar-actions,
+.lead-box,
+.floating-cta {
+  display: none !important;
+}
 
       input, textarea, button {
         display: none !important;
@@ -688,48 +619,6 @@ export default function Home() {
     .dot:nth-child(2) { animation-delay: 0.15s; }
     .dot:nth-child(3) { animation-delay: 0.3s; }
 
-    .sparkle {
-      position: absolute;
-      display: block;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.98);
-      box-shadow:
-        0 0 12px rgba(255,255,255,1),
-        0 0 26px rgba(255,255,255,0.9),
-        0 0 46px rgba(255,255,255,0.55),
-        0 0 70px rgba(255,255,255,0.28);
-      animation-name: twinkle, floaty;
-      animation-timing-function: ease-in-out, ease-in-out;
-      animation-iteration-count: infinite, infinite;
-      opacity: 0.35;
-      filter: blur(0.2px);
-    }
-
-    @keyframes twinkle {
-      0%, 100% {
-        opacity: 0.18;
-        transform: scale(0.8) rotate(0deg);
-      }
-      25% {
-        opacity: 0.55;
-        transform: scale(1.5) rotate(45deg);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(2.4) rotate(90deg);
-      }
-      75% {
-        opacity: 0.6;
-        transform: scale(1.6) rotate(135deg);
-      }
-    }
-
-    @keyframes floaty {
-      0%, 100% { margin-top: 0px; margin-left: 0px; }
-      25% { margin-top: -10px; margin-left: 4px; }
-      50% { margin-top: -18px; margin-left: -3px; }
-      75% { margin-top: -8px; margin-left: 5px; }
-    }
 
     @keyframes dotBounce {
       0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
@@ -741,10 +630,6 @@ export default function Home() {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes softPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(244,114,182,0.14); }
-      50% { box-shadow: 0 0 0 10px rgba(244,114,182,0); }
-    }
 
     .app-shell {
       max-width: 1500px;
@@ -827,9 +712,6 @@ export default function Home() {
       align-items: center;
     }
 
-    .logo-pulse {
-      animation: softPulse 2.4s infinite ease-in-out;
-    }
 
     .quick-card {
       transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
@@ -897,7 +779,7 @@ export default function Home() {
     <>
       <style>{printStyles}</style>
       <style>{globalStyles}</style>
-      <SparkleBackground />
+      
 
       <main
         style={{
@@ -926,7 +808,7 @@ export default function Home() {
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div className="logo-pulse">
+                <div>
                   <LogoArea />
                 </div>
 
