@@ -861,23 +861,10 @@ export default function Home() {
                     display: "inline-block",
                   }}
                 />
-                브로슈어 제작 전용 상담실
+                사업전략 구성을 위한 자체개발 AI모델
               </div>
 
-              <div
-                style={{
-                  fontSize: 9,
-                  color: "#7a3652",
-                  lineHeight: 1.85,
-                  marginBottom: 18,
-                }}
-              >
-                브로슈어 제작 전에 사업 스토리,
-                <br />
-                핵심 메시지, 소개 문안, 전략 방향을
-                <br />
-                AI와 함께 정리합니다.
-              </div>
+              
 
               
 
