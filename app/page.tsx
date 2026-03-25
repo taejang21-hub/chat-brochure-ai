@@ -939,8 +939,6 @@ export default function Home() {
                 </div>
               </div>
 
-             
-
               <div className="sidebar-actions" style={{ flexShrink: 0 }}>
                 <div className="sidebar-actions-grid">
                   <a href={`tel:${PHONE_NUMBER}`} style={linkReset}>
@@ -988,8 +986,6 @@ export default function Home() {
           >
             <div className="hero-grid">
               <div>
-                
-
                 <div
                   className="hero-subtitle"
                   style={{
@@ -1405,12 +1401,34 @@ export default function Home() {
         <div className="floating-cta">
           <a href={`tel:${PHONE_NUMBER}`} style={linkReset}>
             <div style={floatingTextCta}>
-            <img src="/ph.png" className="w-6 h-6" />
+              <img
+                src="/ph.png"
+                alt="전화문의"
+                style={{
+                  display: "block",
+                  width: "auto",
+                  height: "auto",
+                  maxWidth: 52,
+                  maxHeight: 52,
+                  objectFit: "contain",
+                }}
+              />
             </div>
           </a>
           <a href={KAKAO_URL} target="_blank" rel="noreferrer" style={linkReset}>
             <div style={floatingTextCta}>
-            <img src="/ta.png" className="w-6 h-6" />
+              <img
+                src="/ta.png"
+                alt="톡톡"
+                style={{
+                  display: "block",
+                  width: "auto",
+                  height: "auto",
+                  maxWidth: 52,
+                  maxHeight: 52,
+                  objectFit: "contain",
+                }}
+              />
             </div>
           </a>
         </div>
@@ -1477,16 +1495,12 @@ const secondaryCtaStyle: React.CSSProperties = {
 };
 
 const floatingTextCta: React.CSSProperties = {
-  minWidth: 88,
-  height: 48,
-  padding: "0 16px",
+  padding: "8px",
   borderRadius: 14,
   background: "rgba(255,255,255,0.92)",
-  color: "#7c3aed",
-  fontWeight: 800,
-  fontSize: 14,
-  display: "grid",
-  placeItems: "center",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
   boxShadow: "0 14px 28px rgba(168,85,247,0.08)",
   backdropFilter: "blur(12px)",
   border: "1px solid rgba(255,255,255,0.55)",
