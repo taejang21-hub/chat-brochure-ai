@@ -552,15 +552,14 @@ export default function Home() {
   const printStyles = `
     @media print {
       aside,
-.composer-shell,
-.chip-row,
-.status-pill,
-.quick-title,
-.sidebar-actions,
-.lead-box,
-.floating-cta {
-  display: none !important;
-}
+      .composer-shell,
+      .chip-row,
+      .quick-title,
+      .sidebar-actions,
+      .lead-box,
+      .floating-cta {
+        display: none !important;
+      }
 
       input, textarea, button {
         display: none !important;
@@ -589,6 +588,7 @@ export default function Home() {
       margin: 0;
       padding: 0;
       font-family: Inter, Pretendard, Apple SD Gothic Neo, Noto Sans KR, sans-serif;
+      overflow: hidden;
     }
     body {
       color: #0f172a;
@@ -632,43 +632,58 @@ export default function Home() {
       gap: 22px;
       position: relative;
       z-index: 1;
+      height: calc(100vh - 44px);
+      align-items: stretch;
     }
 
     .sidebar {
       position: sticky;
       top: 20px;
-      height: fit-content;
+      height: 100%;
       animation: fadeUp 0.55s ease;
+    }
+
+    .sidebar-panel {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .main-panel {
       animation: fadeUp 0.65s ease;
+      height: 100%;
+      overflow: hidden;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
+      grid-template-columns: 1fr;
+      gap: 0;
       align-items: start;
-      margin-bottom: 22px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
     }
 
     .company-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
     }
 
     .chip-row {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
     }
 
     .chat-panel {
       flex: 1;
+      min-height: 0;
       overflow-y: auto;
       position: relative;
       scroll-behavior: smooth;
@@ -691,11 +706,11 @@ export default function Home() {
     .message-bubble:hover { transform: translateY(-1px); }
 
     .composer-shell {
-      position: sticky;
-      bottom: 0;
-      padding-top: 8px;
+      position: relative;
+      padding-top: 10px;
       background: linear-gradient(180deg, rgba(250,245,255,0) 0%, rgba(250,245,255,0.84) 14%, rgba(250,245,255,0.98) 100%);
       backdrop-filter: blur(12px);
+      flex-shrink: 0;
     }
 
     .composer-grid {
@@ -753,24 +768,30 @@ export default function Home() {
     }
 
     @media (max-width: 1180px) {
-      .app-shell { grid-template-columns: 1fr; }
-      .sidebar { position: relative; top: 0; }
+      html, body { overflow: auto; }
+      .app-shell {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .sidebar { position: relative; top: 0; height: auto; }
+      .sidebar-panel { height: auto; }
+      .main-panel { height: auto; overflow: visible; }
       .package-grid { grid-template-columns: 1fr; }
       .chip-row { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 760px) {
+      html, body { overflow: auto; }
       main { padding: 12px !important; }
       .hero-grid { grid-template-columns: 1fr; }
       .company-grid { grid-template-columns: 1fr; }
       .full-span { grid-column: auto !important; }
       .composer-grid { grid-template-columns: 1fr; }
       .message-bubble { max-width: 95% !important; }
-      .main-panel { padding: 18px !important; border-radius: 24px !important; }
+      .main-panel { padding: 18px !important; border-radius: 24px !important; height: auto !important; }
       .sidebar-panel { border-radius: 24px !important; padding: 18px !important; }
       .hero-title { font-size: 28px !important; line-height: 1.12 !important; }
       .hero-subtitle { font-size: 14px !important; }
-      .status-pill { width: fit-content; }
       .floating-cta {
         right: 12px;
         bottom: 12px;
@@ -798,6 +819,7 @@ export default function Home() {
           color: "#0f172a",
           position: "relative",
           zIndex: 1,
+          overflow: "hidden",
         }}
       >
         <div className="app-shell">
@@ -815,72 +837,116 @@ export default function Home() {
                 backdropFilter: "blur(18px)",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div>
-                  <LogoArea />
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                  <div>
+                    <LogoArea />
+                  </div>
+
+                  <div>
+                    <div
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 700,
+                        color: "rgba(107,33,67,0.72)",
+                        letterSpacing: "0.06em",
+                        marginBottom: 4,
+                      }}
+                    >
+                      세계최초 AI 브로슈어 플랫폼
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 24,
+                        fontWeight: 800,
+                        letterSpacing: "-0.05em",
+                        lineHeight: 1.05,
+                        color: "#6b2143",
+                      }}
+                    >
+                      챗브로슈어AI
+                    </div>
+                  </div>
                 </div>
 
-                <div>
-                  <div
-                    style={{
-                      fontSize: 12,
-                      fontWeight: 700,
-                      color: "rgba(107,33,67,0.72)",
-                      letterSpacing: "0.06em",
-                      marginBottom: 4,
-                    }}
-                  >
-                    세계최초 AI 브로슈어 플랫폼
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 24,
-                      fontWeight: 800,
-                      letterSpacing: "-0.05em",
-                      lineHeight: 1.05,
-                      color: "#6b2143",
-                    }}
-                  >
-                    챗브로슈어AI
-                  </div>
-                </div>
-              </div>
-
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "8px 12px",
-                  borderRadius: 999,
-                  background: "rgba(255,255,255,0.46)",
-                  fontSize: 12,
-                  fontWeight: 700,
-                  marginBottom: 16,
-                  color: "#9f1239",
-                }}
-              >
-                <span
+                <div
                   style={{
-                    width: 8,
-                    height: 8,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "8px 12px",
                     borderRadius: 999,
-                    background: "#f472b6",
-                    display: "inline-block",
+                    background: "rgba(255,255,255,0.46)",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    marginBottom: 16,
+                    color: "#9f1239",
                   }}
-                />
-                사업전략 구성을 위한 자체개발 AI모델
+                >
+                  <span
+                    style={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: 999,
+                      background: "#f472b6",
+                      display: "inline-block",
+                    }}
+                  />
+                  사업전략 구성을 위한 자체개발 AI모델
+                </div>
+
+                <div
+                  style={{
+                    borderRadius: 20,
+                    padding: "18px 16px",
+                    background: "rgba(255,255,255,0.42)",
+                    border: "1px solid rgba(255,255,255,0.38)",
+                    marginBottom: 16,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 800,
+                      lineHeight: 1.3,
+                      letterSpacing: "-0.04em",
+                      color: "#6b2143",
+                      marginBottom: 10,
+                    }}
+                  >
+                    사업 내용을 문서로 바꾸고
+                    <br />
+                    브로슈어 전략까지 설계합니다
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: 14,
+                      lineHeight: 1.85,
+                      color: "#7a3652",
+                    }}
+                  >
+                    챗브로슈어AI가 초안을 먼저 정리하고,
+                    <br />
+                    이후 전문 디자이너와 편집자가 브로슈어를 완성합니다.
+                    <br />
+                    인쇄 제작이 끝나면 브로슈어.kr이 배포와 영업까지 연결해
+                    <br />
+                    실제 마케팅 실행으로 이어드립니다.
+                  </div>
+                </div>
               </div>
 
               <div
                 style={{
                   height: 1,
                   background: "rgba(159,18,57,0.10)",
-                  margin: "18px 0 14px",
+                  margin: "0 0 14px",
+                  flexShrink: 0,
                 }}
               />
 
-              <div className="sidebar-actions">
+              <div className="sidebar-actions" style={{ flexShrink: 0 }}>
                 <div className="sidebar-actions-grid">
                   <a href={`tel:${PHONE_NUMBER}`} style={linkReset}>
                     <div className="action-btn" style={sideButtonPink}>전화 문의</div>
@@ -922,74 +988,35 @@ export default function Home() {
               boxShadow: "0 20px 48px rgba(99,102,241,0.06)",
               display: "flex",
               flexDirection: "column",
-              minHeight: "88vh",
+              minHeight: 0,
             }}
           >
             <div className="hero-grid">
               <div>
                 <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    padding: "8px 12px",
-                    borderRadius: 999,
-                    background: "rgba(255,255,255,0.66)",
-                    color: "#6d28d9",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    marginBottom: 12,
-                    backdropFilter: "blur(8px)",
-                  }}
-                >
-                  AI BROCHURE CONSULTING
-                </div>
-
-                <div
                   className="hero-title"
                   style={{
-                    fontSize: 36,
+                    fontSize: 34,
                     fontWeight: 800,
                     letterSpacing: "-0.06em",
                     lineHeight: 1.08,
                     color: "#1e1b4b",
-                    marginBottom: 10,
+                    marginBottom: 8,
                   }}
                 >
-                  사업 내용을 문서로 바꾸고
-                  <br />
-                  브로슈어 전략까지 함께 설계합니다
+                  무엇을 정리해드릴까요?
                 </div>
 
                 <div
                   className="hero-subtitle"
                   style={{
-                    fontSize: 15,
-                    lineHeight: 1.85,
+                    fontSize: 14,
+                    lineHeight: 1.75,
                     color: "#5b5f75",
                   }}
                 >
-                  챗브로슈어AI로 초안이 만들어지면, 이후 전문 디자이너와 편집자가 당신의 브로슈어를 완성합니다.
-                  <br />
-                  인쇄 제작까지 완료되면, 브로슈어.kr이 배포와 영업을 도와드리며 "당신의 마케팅 성장 전략"으로 실현해드립니다.
+                  회사 정보를 입력한 뒤, 가운데 작업 버튼을 누르거나 아래 입력창에서 바로 요청하면 됩니다.
                 </div>
-              </div>
-
-              <div
-                className="status-pill"
-                style={{
-                  padding: "12px 16px",
-                  borderRadius: 16,
-                  background: "rgba(236,253,243,0.92)",
-                  color: "#027a48",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  minWidth: 120,
-                  textAlign: "center",
-                  backdropFilter: "blur(8px)",
-                }}
-              >
-                {loading ? "정리 중" : "준비 완료"}
               </div>
             </div>
 
@@ -1024,7 +1051,7 @@ export default function Home() {
                 style={{
                   ...fieldStylePremium,
                   gridColumn: "1 / 3",
-                  minHeight: 112,
+                  minHeight: 88,
                   resize: "vertical",
                   paddingTop: 14,
                 }}
@@ -1072,9 +1099,7 @@ export default function Home() {
                 background: "rgba(255,255,255,0.58)",
                 border: "1px solid rgba(255,255,255,0.34)",
                 padding: 20,
-                marginBottom: 16,
-                minHeight: 520,
-                maxHeight: "64vh",
+                marginBottom: 12,
                 backdropFilter: "blur(14px)",
               }}
             >
@@ -1085,22 +1110,22 @@ export default function Home() {
                     display: "grid",
                     placeItems: "center",
                     textAlign: "center",
-                    padding: "40px 24px",
+                    padding: "24px 20px",
                   }}
                 >
                   <div>
                     <div
                       style={{
-                        width: 88,
-                        height: 88,
-                        borderRadius: 28,
-                        margin: "0 auto 18px",
+                        width: 76,
+                        height: 76,
+                        borderRadius: 24,
+                        margin: "0 auto 14px",
                         background:
                           "linear-gradient(135deg, #1e3a8a 0%, #4338ca 52%, #7e22ce 100%)",
                         display: "grid",
                         placeItems: "center",
                         color: "#ffffff",
-                        fontSize: 28,
+                        fontSize: 24,
                         fontWeight: 800,
                         boxShadow: "0 18px 40px rgba(67,56,202,0.20)",
                       }}
@@ -1110,11 +1135,11 @@ export default function Home() {
 
                     <div
                       style={{
-                        fontSize: 30,
+                        fontSize: 28,
                         fontWeight: 800,
                         letterSpacing: "-0.05em",
                         color: "#1e1b4b",
-                        marginBottom: 10,
+                        marginBottom: 8,
                       }}
                     >
                       무엇을 정리해드릴까요?
@@ -1122,8 +1147,8 @@ export default function Home() {
 
                     <div
                       style={{
-                        fontSize: 15,
-                        lineHeight: 1.85,
+                        fontSize: 14,
+                        lineHeight: 1.75,
                         color: "#5b5f75",
                       }}
                     >
