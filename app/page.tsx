@@ -866,7 +866,7 @@ export default function Home() {
 
               <div
                 style={{
-                  fontSize: 14,
+                  fontSize: 9,
                   color: "#7a3652",
                   lineHeight: 1.85,
                   marginBottom: 18,
@@ -879,33 +879,7 @@ export default function Home() {
                 AI와 함께 정리합니다.
               </div>
 
-              <div
-                style={{
-                  borderRadius: 20,
-                  padding: 15,
-                  background: "rgba(255,255,255,0.50)",
-                  border: "1px solid rgba(255,255,255,0.42)",
-                  marginBottom: 18,
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: 12,
-                    color: "#9f1239",
-                    marginBottom: 6,
-                    fontWeight: 700,
-                  }}
-                >
-                  CURRENT OUTPUT
-                </div>
-                <div style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.7, color: "#6b2143" }}>
-                  브로슈어 초안
-                  <br />
-                  회사소개서 초안
-                  <br />
-                  제품소개서 · 전략 초안
-                </div>
-              </div>
+              
 
               <div
                 className="quick-title"
