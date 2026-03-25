@@ -1404,10 +1404,14 @@ export default function Home() {
 
         <div className="floating-cta">
           <a href={`tel:${PHONE_NUMBER}`} style={linkReset}>
-            <div style={floatingTextCta}>전화문의</div>
+            <div style={floatingTextCta}>
+            <img src="/ph.png" className="w-6 h-6" />
+            </div>
           </a>
           <a href={KAKAO_URL} target="_blank" rel="noreferrer" style={linkReset}>
-            <div style={floatingTextCta}>톡톡</div>
+            <div style={floatingTextCta}>
+            <img src="/ta.png" className="w-6 h-6" />
+            </div>
           </a>
         </div>
       </main>
