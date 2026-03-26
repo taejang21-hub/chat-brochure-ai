@@ -1093,24 +1093,30 @@ export default function Home() {
                   }}
                 >
                   <div>
-                    <div
-                      style={{
-                        width: 76,
-                        height: 76,
-                        borderRadius: 24,
-                        margin: "0 auto 14px",
-                        background:
-                          "linear-gradient(135deg, #1e3a8a 0%, #4338ca 52%, #7e22ce 100%)",
-                        display: "grid",
-                        placeItems: "center",
-                        color: "#ffffff",
-                        fontSize: 24,
-                        fontWeight: 800,
-                        boxShadow: "0 18px 40px rgba(67,56,202,0.20)",
-                      }}
-                    >
-                      AI
-                    </div>
+                  <div
+  style={{
+    width: 76,
+    height: 76,
+    borderRadius: 24,
+    margin: "0 auto 14px",
+    overflow: "hidden",
+    background: "rgba(255,255,255,0.92)",
+    boxShadow: "0 18px 40px rgba(67,56,202,0.20)",
+    display: "grid",
+    placeItems: "center",
+  }}
+>
+  <img
+    src="/logo.png"
+    alt="챗브로슈어AI 로고"
+    style={{
+      display: "block",
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+    }}
+  />
+</div>
 
                     <div
                       style={{
