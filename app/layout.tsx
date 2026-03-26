@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  icons: {
-    icon: "/favicon.png",
-  },
   title: "챗브로슈어AI",
   description: "AI로 브로슈어 초안과 사업 스토리를 만들고, 상담까지 연결하는 서비스",
 
